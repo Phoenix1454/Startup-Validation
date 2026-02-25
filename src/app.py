@@ -1,11 +1,23 @@
 import os
 import streamlit as st
+from dotenv import load_dotenv
 from langchain_core.messages import ToolMessage, AIMessageChunk, HumanMessage
 
+# Load .env for local dev
+load_dotenv()
+
 # Load Streamlit Cloud secrets into environment variables (for deployed app)
-for key in ["OPENAI_API_KEY", "FIRECRAWL_API_KEY", "GITHUB_TOKEN"]:
-    if key in st.secrets:
-        os.environ[key] = st.secrets[key]
+try:
+    for key in ["OPENAI_API_KEY", "FIRECRAWL_API_KEY", "GITHUB_TOKEN"]:
+        if key in st.secrets:
+            os.environ[key] = st.secrets[key]
+except Exception:
+    pass  # No secrets file (local dev)
+
+# Debug: show whether key is loaded (remove after confirming it works)
+if not os.environ.get("OPENAI_API_KEY"):
+    st.error("❌ OPENAI_API_KEY is not set. Add it in Streamlit Cloud → Manage app → Settings → Secrets.")
+    st.stop()
 
 from validator import create_startup_validator_agent
 
