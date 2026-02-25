@@ -1,5 +1,12 @@
+import os
 import streamlit as st
 from langchain_core.messages import ToolMessage, AIMessageChunk, HumanMessage
+
+# Load Streamlit Cloud secrets into environment variables (for deployed app)
+for key in ["OPENAI_API_KEY", "FIRECRAWL_API_KEY", "GITHUB_TOKEN"]:
+    if key in st.secrets:
+        os.environ[key] = st.secrets[key]
+
 from validator import create_startup_validator_agent
 
 # Cache agent in session_state so memory persists across Streamlit reruns
