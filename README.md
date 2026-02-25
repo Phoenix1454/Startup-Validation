@@ -6,6 +6,8 @@ An AI-powered startup validation agent built with **LangGraph** and **Streamlit*
 ![Streamlit](https://img.shields.io/badge/Streamlit-Chat%20UI-red)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Agent-green)
 
+Active link: https://phoenix1454-startup-validation-srcapp-wjnche.streamlit.app
+
 ---
 
 ## Features
