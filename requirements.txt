@@ -1,0 +1,7 @@
+firecrawl-py>=4.16.3
+langchain>=1.2.10
+langchain-openai>=1.1.10
+langgraph>=1.0.9
+python-dotenv>=1.2.1
+streamlit>=1.54.0
+requests
